@@ -58,14 +58,16 @@ $(document).ready(function(){
     mesh.rotation.y = de2ra(-90);
     mesh.scale.set(1, 1, 1);
     mesh.doubleSided = true;
-    mesh.castShadow = true;
+    mesh.castShadow = true
+    // 给场景中添加立方体
     scene.add(mesh);
 
+    // --------------------- 方向光源 --------------------- //
     var object3d  = new THREE.DirectionalLight('white', 0.15);
     object3d.position.set(6,3,9);
     object3d.name = 'Back light';
     scene.add(object3d);
-
+    
     object3d = new THREE.DirectionalLight('white', 0.35);
     object3d.position.set(-6, -3, 0);
     object3d.name   = 'Key light';
@@ -75,7 +77,7 @@ $(document).ready(function(){
     object3d.position.set(9, 9, 6);
     object3d.name = 'Fill light';
     scene.add(object3d);
-
+    // --------------------- 聚光灯 --------------------- //
     var spotLight = new THREE.SpotLight( 0xffffff );
     spotLight.position.set( 3, 30, 3 );
     spotLight.castShadow = true;
@@ -86,6 +88,7 @@ $(document).ready(function(){
     spotLight.shadowCameraFov = 45;
     scene.add( spotLight );
 
+    
     controls = new THREE.OrbitControls(camera, renderer.domElement);
     window.addEventListener( 'resize', onWindowResize, false );
 
